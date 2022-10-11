@@ -2,6 +2,7 @@ package kodlamaIo.business;
 
 import java.util.List;
 
+import kodlamaIo.business.validators.CourseValidator;
 import kodlamaIo.core.Loggers.ILogger;
 import kodlamaIo.dataAccess.ICourseDao;
 import kodlamaIo.entities.Course;
@@ -16,7 +17,7 @@ public class CourseManager {
 	}
 
 	public void add(Course course) {
-		if (getByName(course.getName()) == null) {
+		if (CourseValidator.isValid(course)) {
 			_courseDao.add(course);
 			_logger.log();
 		}
@@ -28,7 +29,7 @@ public class CourseManager {
 	}
 
 	public void update(Course course) {
-		if (getByName(course.getName()) == null) {
+		if (CourseValidator.isValid(course)) {
 			_courseDao.update(course);
 			_logger.log();
 		}

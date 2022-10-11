@@ -1,6 +1,8 @@
 package kodlamaIo.business;
 
 import java.util.List;
+
+import kodlamaIo.business.validators.TeacherValidator;
 import kodlamaIo.core.Loggers.ILogger;
 import kodlamaIo.dataAccess.ITeacherDao;
 import kodlamaIo.entities.Teacher;
@@ -15,7 +17,7 @@ public class TeacherManager {
 	}
 
 	public void add(Teacher teacher) {
-		if (getByName(teacher.getName()) == null) {
+		if (TeacherValidator.isValid(teacher)) {
 			_teacherDao.add(teacher);
 			_logger.log();
 		}
@@ -27,7 +29,7 @@ public class TeacherManager {
 	}
 
 	public void update(Teacher teacher) {
-		if (getByName(teacher.getName()) == null) {
+		if (TeacherValidator.isValid(teacher)) {
 			_teacherDao.update(teacher);
 			_logger.log();
 		}

@@ -2,6 +2,7 @@ package kodlamaIo.business;
 
 import java.util.List;
 
+import kodlamaIo.business.validators.CategoryValidator;
 import kodlamaIo.core.Loggers.ILogger;
 import kodlamaIo.dataAccess.ICategoryDao;
 import kodlamaIo.entities.Category;
@@ -16,7 +17,7 @@ public class CategoryManager {
 	}
 
 	public void add(Category category) {
-		if (getByName(category.getName()) == null) {
+		if (CategoryValidator.isValid(category)) {
 			_categoryDao.add(category);
 			_logger.log();
 		}
@@ -28,7 +29,7 @@ public class CategoryManager {
 	}
 
 	public void update(Category category) {
-		if (getByName(category.getName()) == null) {
+		if (CategoryValidator.isValid(category)) {
 			_categoryDao.update(category);
 			_logger.log();
 		}

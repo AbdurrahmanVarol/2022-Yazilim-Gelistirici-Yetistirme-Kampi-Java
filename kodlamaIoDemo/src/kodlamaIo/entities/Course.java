@@ -5,16 +5,18 @@ public class Course {
 	private int teacherId;
 	private int categoryId;
 	private String name;
+	private double price;
 
 	public Course() {
 
 	}
 
-	public Course(int id, int teacherId, int categoryId, String name) {		
+	public Course(int id, int teacherId, int categoryId, String name, double price) {
 		this.id = id;
 		this.teacherId = teacherId;
 		this.categoryId = categoryId;
 		this.name = name;
+		this.price = price;
 	}
 
 	public int getId() {
@@ -47,6 +49,14 @@ public class Course {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+
+	public double getPrice() {
+		return price;
+	}
+
+	public void setPrice(double price) {
+		this.price = price;
 	}
 
 }
